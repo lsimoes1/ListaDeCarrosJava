@@ -1,10 +1,10 @@
 package com.carros.domain;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 @Entity
 public class Carro {
@@ -14,6 +14,10 @@ public class Carro {
 	private Long id;
 	
 	private String nome;
+	
+	public Carro() {
+		
+	}
 	
 	public Carro(Long id, String nome) {
 		this.id = id;
