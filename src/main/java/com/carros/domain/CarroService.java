@@ -2,6 +2,7 @@ package com.carros.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,10 @@ public class CarroService {
 
 		return rep.findAll();
 
+	}
+	
+	public Optional<Carro> getCarroById(Long id){
+		return rep.findById(id);
 	}
 
 	public List<Carro> getCarrosFake() {
