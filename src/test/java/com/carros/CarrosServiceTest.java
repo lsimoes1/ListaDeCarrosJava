@@ -17,7 +17,7 @@ import com.carros.domain.CarroService;
 import com.carros.domain.dto.CarroDTO;
 
 @SpringBootTest
-class CarrosApplicationTests {
+class CarrosServiceTest {
 
 	@Autowired
 	private CarroService service;
@@ -53,6 +53,26 @@ class CarrosApplicationTests {
 	@Test
 	void testeLista() {
 		List<CarroDTO> carros = service.getCarros();
+		
+		assertEquals(30, carros.size());
 	}
-
+	
+	@Test
+	void testeListaPorTipo() {
+		assertEquals(10, service.getCarrosByTipo("classicos").size());
+		assertEquals(10, service.getCarrosByTipo("esportivos").size());
+		assertEquals(10, service.getCarrosByTipo("luxo").size());
+	}
+	
+	@Test
+	void testeGet() {
+		Optional<CarroDTO> op= service.getCarroById(11L);
+		
+		assertTrue(op.isPresent());
+		
+		CarroDTO c = op.get();
+		
+		assertEquals("Ferrari FF", c.getNome());
+	}
+	
 }
